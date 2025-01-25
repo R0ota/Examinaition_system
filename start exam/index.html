@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Start Exam</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(to bottom, #f4f4f4, #e8f1eb);
+      }
+
+      .container {
+        background-color: blue;
+        width: 90%;
+        max-width: 500px;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .container h2 {
+        font-size: 24px;
+        color: black;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .container img {
+        max-width: 80%;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      .container button {
+        width: 150px;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        border: 1px solid white;
+        background-color: transparent;
+        color: black;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .container button:hover {
+        background-color: white;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Are you ready to start the exam?</h2>
+      <img src="1.jpeg" alt="Start Exam Illustration" />
+      <button onclick="startExam()">Start</button>
+    </div>
+
+    <script>
+      function startExam() {
+        alert("Exam Started!");
+        window.location.href = "Exam.html";
+      }
+    </script>
+  </body>
+</html>
