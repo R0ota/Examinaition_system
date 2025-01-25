@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Quiz</title>
+    <link rel="stylesheet" href="exam.css" />
+  </head>
+  <body>
+    <div class="quiz-wrapper">
+      <!-- Quiz Section -->
+      <div class="quiz-container">
+        <div class="timer"></div>
+        <h2 class="question-title">Choose the correct answer</h2>
+        <p class="question"></p>
+        <div class="options"></div>
+
+        <!-- Pagination Section -->
+        <div class="pagination">
+          <svg
+            class="prev-arrow"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 320 512"
+          >
+            <path
+              d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"
+            />
+          </svg>
+
+          <span class="page-info"></span>
+
+          <svg
+            class="next-arrow"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 320 512"
+          >
+            <path
+              d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
+            />
+          </svg>
+        </div>
+
+        <button class="submit-button">Submit</button>
+      </div>
+
+      <!-- Marked Questions Section -->
+      <div class="marked-questions">
+        <h3>Marked Questions</h3>
+        <ul class="marked-list"></ul>
+      </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
