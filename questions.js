@@ -87,8 +87,8 @@ export const questions = [
       {
         id: 5.1,
         text: "It is used to uniquely identify some specific styles of some element.",
-        isCorrect: true,
-        score: 10,
+        isCorrect: false,
+        score: 0,
       },
       {
         id: 5.2,
