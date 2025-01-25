@@ -18,10 +18,20 @@
       <img src="time flies.gif" alt="Time Out" />
       <p id="sorry"></p>
     </div>
-    <script>
+   <script>
+      // display user name with sorry msg
       let sorry = document.getElementById("sorry");
       let userName = localStorage.getItem("User Name");
-      sorry.innerText = `Sorry ${userName} Time Is Out ! `
+      sorry.innerText = `Sorry ${userName}, Time Is Out!`;
+
+      // replace the current history state 
+      history.replaceState(null, null, location.href);
+
+      // no back
+      window.onpopstate = function () {
+        // redirect to the page 
+        window.location.href = "../start exam/index.html";
+      };
     </script>
   </body>
 </html>
