@@ -3,171 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Results Page</title>
-    <style>
-      /* General Body Styling */
-      body {
-        margin: 0;
-        font-family: 'Poppins', Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
-        overflow: hidden;
-        animation: gradientBackground 10s infinite alternate;
-      }
-
-      /* Background Animation */
-      @keyframes gradientBackground {
-        0% {
-          background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
-        }
-        50% {
-          background: linear-gradient(to bottom, #bbdefb, #e3f2fd);
-        }
-        100% {
-          background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
-        }
-      }
-
-      /* Container Styling */
-      .container {
-        background-color: white;
-        width: 90%;
-        max-width: 600px;
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        animation: fadeIn 1s ease-in-out;
-      }
-
-      .container h2 {
-        font-size: 28px;
-        color: #1565c0;
-        margin-bottom: 20px;
-        font-weight: bold;
-      }
-
-      .container img {
-        max-width: 150px;
-        height: auto;
-        margin-bottom: 20px;
-        animation: float 3s infinite ease-in-out;
-      }
-
-      /* Floating animation for the image */
-      @keyframes float {
-        0% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-        100% {
-          transform: translateY(0);
-        }
-      }
-
-      .container p {
-        font-size: 18px;
-        color: #424242;
-        margin: 10px 0;
-      }
-
-      .container p.success {
-        color: #2e7d32;
-        font-weight: bold;
-      }
-
-      .container p.fail {
-        color: #d32f2f;
-        font-weight: bold;
-      }
-
-      /* Media Queries for Responsiveness */
-      @media (max-width: 768px) {
-        .container {
-          padding: 20px;
-        }
-
-        .container h2 {
-          font-size: 24px;
-        }
-
-        .container p {
-          font-size: 16px;
-        }
-
-        .container img {
-          max-width: 120px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .container {
-          padding: 15px;
-        }
-
-        .container h2 {
-          font-size: 20px;
-        }
-
-        .container p {
-          font-size: 14px;
-        }
-
-        .container img {
-          max-width: 100px;
-        }
-      }
-
-      /* Fade-in Animation */
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    </style>
+    <title>result page</title>
+    <link rel="stylesheet" href="result.css" />
   </head>
   <body>
-    <div class="container" id="resultContainer">
-      <h2>Result</h2>
-      <img id="result-Image" src="s.jpeg" alt="Result Illustration" />
-      <p id="grade-message"></p>
-      <p id="des-message"></p>
+    <div class="container" id="quizContainer">
+      <h2>Quiz</h2>
+      <div id="questions"></div>
+      <button id="submitQuiz">Submit</button>
     </div>
-
-    <script>
-      // Default inputs
-      const firstName = "Mai";
-      const lastName = "Mostafa";
-      const grade = 100; // Change this to test
-
-      // Elements
-      const gradeMessage = document.getElementById("grade-message");
-      const resultMessage = document.getElementById("des-message");
-      const resultImage = document.getElementById("result-Image");
-
-      if (grade >= 50) {
-        gradeMessage.textContent = `Your grade is ${grade}%`;
-        gradeMessage.className = "success";
-
-        resultMessage.textContent = `Congratulations ${firstName} ${lastName}!`;
-        resultImage.src = "s.jpeg"; // Replace with your success image path
-      } else {
-        gradeMessage.textContent = `Your grade is ${grade}%`;
-        gradeMessage.className = "fail";
-
-        resultMessage.textContent = `Sorry ${firstName} ${lastName}, you failed this quiz.`;
-        resultImage.src = "f.jpeg"; // Replace with your failure image path
-      }
-    </script>
+    <div class="container hidden" id="resultContainer">
+      <h2>Result</h2>
+      <img id="resultImage" src="s.jpeg" alt="Result Illustration" />
+      <p id="gradeMessage"></p>
+      <p id="resultMessage"></p>
+    </div>
+    <script src="result.js"></script>
   </body>
 </html>
