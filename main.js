@@ -47,6 +47,7 @@ function displayQuestion(index) {
   const flagIcon = document.querySelector(".flag-icon");
   if (flagIcon) {
     flagIcon.addEventListener("click", () => {
+      flagIcon.classList.toggle("flagged");
       handleFlagQuestion(
         currentQuestion.id,
         markedQuestions,
@@ -86,6 +87,8 @@ function updateMarkedQuestions(updatedList = markedQuestions) {
     // Add delete functionality
     li.querySelector(".delete-icon").addEventListener("click", () => {
       handleDeleteQuestion(id, markedQuestions, updateMarkedQuestions);
+                  flagIcon.classList.toggle(".flag-icon");
+
     });
 
     markedList.appendChild(li);

@@ -52,25 +52,25 @@ export const questions = [
   },
   {
     id: 4,
-    question: "What is the effect of the <b> tag?",
+    question: "What tag is used to render an image on a webpage?",
     options: [
       {
         id: 4.1,
-        text: "It converts the text within it to bold font.",
-        isCorrect: true,
-        score: 10,
+        text: "image",
+        isCorrect: false,
+        score: 0,
       },
       {
         id: 4.2,
-        text: "It is used to write black-colored font.",
+        text: "src",
         isCorrect: false,
         score: 0,
       },
       {
         id: 4.3,
-        text: "It is used to change the font size.",
-        isCorrect: false,
-        score: 0,
+        text: "img",
+        isCorrect: true,
+        score: 10,
       },
       {
         id: 4.4,
