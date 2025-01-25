@@ -18,5 +18,5 @@ export function timeDown() {
       }
     }, 1000);
 }
-
+//comment
 timer.innerHTML = ``;
