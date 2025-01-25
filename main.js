@@ -2,15 +2,17 @@ import { questions } from "./questions.js";
 import { createPagination } from "./pagination.js";
 import { handleFlagQuestion } from "./flag.js";
 import { handleDeleteQuestion } from "./delete.js";
+import { timeDown } from "./timer.js";
+import { submitAction } from "./submit.js";
 
 const questionContainer = document.querySelector(".question");
 const optionsContainer = document.querySelector(".options");
-const submitButton = document.querySelector(".submit-button");
 const markedList = document.querySelector(".marked-list");
 
 let currentQuestionIndex = 0;
 let markedQuestions = [];
-
+//timer
+timeDown();
 // Function to display a question
 function displayQuestion(index) {
   const currentQuestion = questions[index];
@@ -89,11 +91,9 @@ function updateMarkedQuestions(updatedList = markedQuestions) {
     markedList.appendChild(li);
   });
 }
-
-// Submit button handler
-submitButton.addEventListener("click", () => {
-  alert("Submit functionality not implemented yet!");
-});
+//submit
+submitAction();
 
 // Initial display
 displayQuestion(currentQuestionIndex);
+

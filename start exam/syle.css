@@ -61,13 +61,15 @@ body {
 /* Image Styling */
 .container img {
   max-width: 100%;
-  height: auto;
+  height: 50vh;
   margin-bottom: 20px;
-  animation: float 3s infinite ease-in-out;
+  border-radius: 10px;
+  /* animation: float 3s infinite ease-in-out; */
+  /* -webkit-animation: float 3s infinite ease-in-out; */
 }
 
 /* Floating Animation */
-@keyframes float {
+/* @keyframes float {
   0% {
     transform: translateY(0);
   }
@@ -77,7 +79,7 @@ body {
   100% {
     transform: translateY(0);
   }
-}
+} */
 
 /* Button Styling */
 .container button {

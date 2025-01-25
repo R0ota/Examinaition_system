@@ -62,24 +62,25 @@ body {
 }
 
 /* SVG Styling */
-.container svg {
+/* .container svg {
   width: 30px;
   height: 30px;
   fill: #1565c0;
   margin-left: 10px;
-}
+} */
 
 /* Image Styling */
 .container img {
   max-width: 100%;
-  height: auto;
+  height: 50vh;
   margin-bottom: 20px;
   border-radius: 10px;
-  animation: float 3s infinite ease-in-out;
+  /* animation: float 3s infinite ease-in-out; */
+  /* -webkit-animation: float 3s infinite ease-in-out; */
 }
 
 /* Floating Animation */
-@keyframes float {
+/* @keyframes float {
   0% {
     transform: translateY(0);
   }
@@ -89,7 +90,7 @@ body {
   100% {
     transform: translateY(0);
   }
-}
+} */
 
 /* Text Styling */
 .container p {
