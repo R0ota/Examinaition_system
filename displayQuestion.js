@@ -43,6 +43,7 @@ export function displayQuestion(
   const flagIcon = document.querySelector(".flag-icon");
   if (flagIcon) {
     flagIcon.addEventListener("click", () => {
+
       handleFlagQuestion(
         currentQuestion.id,
         markedQuestions,

@@ -1,5 +1,5 @@
 let timer = document.getElementsByClassName("timer")[0];
-let time = 60; // 2 minute in seconds
+let time = 160; // 2 minute in seconds
 
 export function timeDown() {
     const timerInterval = setInterval(() => {
