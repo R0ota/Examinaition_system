@@ -1,0 +1,99 @@
+/* General Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #e0f7fa, #bbdefb);
+  overflow: hidden;
+  animation: gradientBackground 10s infinite alternate;
+}
+
+/* Background Animation */
+@keyframes gradientBackground {
+  0% {
+    background: linear-gradient(to bottom, #e0f7fa, #bbdefb);
+  }
+  50% {
+    background: linear-gradient(to bottom, #bbdefb, #e0f7fa);
+  }
+  100% {
+    background: linear-gradient(to bottom, #e0f7fa, #bbdefb);
+  }
+}
+
+/* Container Styling */
+.container {
+  width: 90%;
+  max-width: 500px;
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Heading Styling */
+.container h2 {
+  text-align: center;
+  color: #1565c0;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Image Styling */
+.container img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  animation: float 3s infinite ease-in-out;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Button Styling */
+.container button {
+  width: 180px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  background-color: #1565c0;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.container button:hover {
+  background-color: #003c8f;
+  transform: scale(1.05);
+}

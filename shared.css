@@ -6,8 +6,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(to bottom, #e0f7fa, #f4f4f9);
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #e0f7fa, #bbdefb);
   overflow: hidden;
   animation: gradientBackground 10s infinite alternate;
 }
@@ -15,17 +15,17 @@ body {
 /* Background Animation */
 @keyframes gradientBackground {
   0% {
-    background: linear-gradient(to bottom, #e0f7fa, #f4f4f9);
+    background: linear-gradient(to bottom, #e0f7fa, #bbdefb);
   }
   50% {
-    background: linear-gradient(to bottom, #f4f4f9, #e0f7fa);
+    background: linear-gradient(to bottom, #bbdefb, #e0f7fa);
   }
   100% {
-    background: linear-gradient(to bottom, #e0f7fa, #f4f4f9);
+    background: linear-gradient(to bottom, #e0f7fa, #bbdefb);
   }
 }
 
-/* Form container */
+/* Shared Container Styling */
 .container {
   width: 90%;
   max-width: 400px;
@@ -36,7 +36,7 @@ body {
   animation: fadeIn 1s ease-in-out;
 }
 
-/* Fade-in animation for the form */
+/* Fade-in Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -48,24 +48,16 @@ body {
   }
 }
 
-/* Form header */
+/* Shared Heading Styling */
 h2 {
   text-align: center;
-  color: #333;
+  color: #1565c0;
   margin-bottom: 20px;
   font-size: 22px;
   font-weight: bold;
 }
 
-/* Labels and inputs styling */
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-size: 14px;
-  color: #333;
-}
-
+/* Shared Input Styling */
 input {
   width: 100%;
   padding: 12px;
@@ -77,16 +69,16 @@ input {
 }
 
 input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #1565c0;
+  box-shadow: 0 0 5px rgba(21, 101, 192, 0.5);
   outline: none;
 }
 
-/* Button styling */
+/* Shared Button Styling */
 button {
   width: 100%;
   padding: 12px;
-  background-color: #007bff;
+  background-color: #1565c0;
   color: white;
   border: none;
   border-radius: 5px;
@@ -96,27 +88,11 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #003c8f;
   transform: scale(1.02);
 }
 
-/* Text links */
-p {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 14px;
-}
-
-p a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-p a:hover {
-  text-decoration: underline;
-}
-
-/* Error and success messages */
+/* Error and Success Messages */
 .error {
   color: red;
   font-size: 12px;
@@ -125,15 +101,15 @@ p a:hover {
 }
 
 .success {
-  color: green;
+  color: #2e7d32;
   font-size: 14px;
   text-align: center;
   margin-top: 10px;
 }
 
-/* Media Queries for Responsiveness */
+/* Responsive Design */
 
-/* For tablets and smaller screens */
+/* For Tablets */
 @media (max-width: 768px) {
   .container {
     padding: 15px;
@@ -152,13 +128,9 @@ p a:hover {
   button {
     font-size: 14px;
   }
-
-  p {
-    font-size: 13px;
-  }
 }
 
-/* For mobile devices */
+/* For Mobile Devices */
 @media (max-width: 480px) {
   .container {
     padding: 10px;
@@ -177,9 +149,5 @@ p a:hover {
   button {
     font-size: 12px;
     padding: 10px;
-  }
-
-  p {
-    font-size: 12px;
   }
 }
