@@ -1,11 +1,9 @@
-import { createPagination } from "./pagination.js";
-import { handleFlagQuestion } from "./flag.js";
+import { updateMarkedQuestions } from "./markQuestion.js";
 
 export function displayQuestion(
   index,
   questions,
   markedQuestions,
-  updateMarkedQuestions,
   setCurrentQuestionIndex
 ) {
   const questionContainer = document.querySelector(".question");
@@ -47,20 +45,20 @@ export function displayQuestion(
   const flagIcon = document.querySelector(".flag-icon");
   if (flagIcon) {
     flagIcon.addEventListener("click", () => {
+      let updatedList;
       if (markedQuestions.includes(currentQuestion.id)) {
         // Remove from flagged list
-        const updatedList = markedQuestions.filter(
-          (id) => id !== currentQuestion.id
-        );
-        updateMarkedQuestions(updatedList);
+        updatedList = markedQuestions.filter((id) => id !== currentQuestion.id);
       } else {
         // Add to flagged list
-        const updatedList = [...markedQuestions, currentQuestion.id];
-        updateMarkedQuestions(updatedList);
+        updatedList = [...markedQuestions, currentQuestion.id];
       }
 
+      // Update the marked questions list
+      updateMarkedQuestions(updatedList);
+
       // Re-render the question to update the flag icon
-      displayQuestion(index, questions, markedQuestions, updateMarkedQuestions);
+      displayQuestion(index, questions, updatedList, setCurrentQuestionIndex);
     });
   }
 }
