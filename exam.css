@@ -161,3 +161,12 @@ body {
   fill: #b30000;
   transform: scale(1.2);
 }
+
+.flag-icon {
+  fill:blue; /* اللون الافتراضي */
+  transition: fill 0.3s ease; /* تأثير سلس لتغيير اللون */
+}
+
+.flagged {
+  fill: red; /* اللون الأزرق عند التفعيل */
+}
