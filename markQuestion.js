@@ -43,4 +43,4 @@ export function updateMarkedQuestions(
     // Append the list item to the DOM
     markedListElement.appendChild(li);
   });
-}
+} 

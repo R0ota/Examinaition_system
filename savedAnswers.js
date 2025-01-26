@@ -1,12 +1,15 @@
 //a file to save selected answers in local storage
 // //savedAnswers.js
-export function setAnswers(questionID, selectedAnswer) {
-   // if there are prev saved answers get them
-    const savedAnswers = JSON.parse(localStorage.getItem("answers")) || {};
-    //update the selected saved ans.
-    savedAnswers[questionID] = selectedAnswer;
-    //save all in local storage
-    localStorage.setItem("answers", JSON.stringify(savedAnswers));
+
+export function setAnswers(questionID, selectedAnswer , questions) {
+  // if there are prev saved answers get them
+  const savedAnswers = JSON.parse(localStorage.getItem("answers")) || {};
+  //update the selected saved ans.
+  savedAnswers[questionID] = selectedAnswer;
+  //save all in local storage
+  localStorage.setItem("answers", JSON.stringify(savedAnswers));
+  const score = calculateScore(questions); // حساب السكور
+  console.log("score: ", score); // عرض السكور في الكونسول
 }
 
 export function getAnswers(questionID) {
@@ -14,20 +17,32 @@ export function getAnswers(questionID) {
     return savedAnswers[questionID];
 }
 
-// calculate score
 export function calculateScore(questions) {
   const savedAnswers = JSON.parse(localStorage.getItem("answers")) || {};
   let score = 0;
 
-  questions.forEach((question) => {
-    const userAnswer = savedAnswers[question.id];
-    const correctOption = question.options.find((option) => option.isCorrect);
+  // console.log("Saved Answers:", savedAnswers);
+  // console.log("Questions:", questions);
 
-    if (userAnswer === correctOption.id) {
-      score += correctOption.score; // add score for the correct answer
+  questions.forEach((question) => {
+    const userAnswer = savedAnswers[question.id]; // Get user-selected answer
+    // console.log("User Answer for Question", question.id, ":", userAnswer);
+
+    const correctOption = question.options.find((option) => option.isCorrect);
+    // console.log("Correct Option for Question", question.id, ":", correctOption);
+
+    if (savedAnswers[question.id] === correctOption.id.toString()) {
+      // console.log("Comparing:", savedAnswers[question.id], correctOption.id);
+      // console.log("Correct Answer for Question", question.id);
+      score += correctOption.score; // Add score for correct answers
     }
+//  else {
+//   console.log("Wrong Answer for Question", question.id);
+// }
   });
 
-  localStorage.setItem("score", score); // Store score once after calculating
+  console.log("Final Calculated Score:", score);
+  localStorage.setItem("score", score); // Store score after calculation
   return score;
 }
+
