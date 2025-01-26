@@ -17,11 +17,21 @@ let markedQuestions = [];
 // Start the timer
 timeDown();
 
+// Function to handle navigation between questions
+function onNavigate(newIndex) {
+  currentQuestionIndex = newIndex; // Update the current question index
+  displayQuestion(currentQuestionIndex, questions, markedQuestions); // Display the new question
+  createPagination(currentQuestionIndex, questions.length, onNavigate); // Update the pagination
+}
+
+// Initialize pagination
+createPagination(currentQuestionIndex, questions.length, onNavigate);
+
+// Display the first question
 displayQuestion(currentQuestionIndex, questions, markedQuestions);
+
 // Function to update marked questions
 updateMarkedQuestions(markedQuestions);
 
 // Handle submit action
 submitAction();
-
-// Initial display
