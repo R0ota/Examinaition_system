@@ -1,6 +1,6 @@
 //displayQuestion.js
 import { updateMarkedQuestions } from "./markQuestion.js";
-import { setAnswers, getAnswers, calculateScore } from "./savedAnswers.js";
+import { setAnswers, getAnswers, calculateScore} from "./savedAnswers.js";
 import { questions } from "./questions.js";
 
 console.log(questions,);
@@ -45,17 +45,18 @@ export function displayQuestion(
       ${option.text}
     `;
     const input = label.querySelector("input");
-    //if exists in lcal storage check this
+    //if exists in local storage check this
     if (input.value === savedAnswer) {
       input.checked = true;
     }
-    input.addEventListener("change", () => {
-      setAnswers(currentQuestion.id, input.value);
-    });
+input.addEventListener("change", () => {
+  setAnswers(currentQuestion.id, input.value, questions); // Save answer and update score
+});
 
     optionsContainer.appendChild(label);
   });
-
+  calculateScore(questions);
+  
   // Handle flagging functionality
   const flagIcon = document.querySelector(".flag-icon");
   if (flagIcon) {
@@ -76,4 +77,5 @@ export function displayQuestion(
       displayQuestion(index, questions, updatedList, setCurrentQuestionIndex);
     });
   }
+
 }
