@@ -1,4 +1,3 @@
-// **new**: Updated function to handle updating flagged questions properly
 export function updateMarkedQuestions(
   updatedList = [],
   displayQuestionCallback
@@ -33,7 +32,7 @@ export function updateMarkedQuestions(
       }
     });
 
-    // **new**: Handle delete icon click, ensuring the question is removed and flag updated
+    // Handle delete icon click, ensuring the question is removed and flag updated
     li.querySelector(".delete-icon").addEventListener("click", () => {
       const newList = updatedList.filter((questionId) => questionId !== id);
       updateMarkedQuestions(newList, displayQuestionCallback); // Update list after removal

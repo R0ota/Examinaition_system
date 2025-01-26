@@ -1,3 +1,4 @@
+//delete.js
 export function handleDeleteQuestion(
   questionId,
   markedQuestions,

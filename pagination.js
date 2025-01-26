@@ -23,3 +23,9 @@ export function createPagination(
       onNavigate(currentQuestionIndex + 1);
   };
 }
+
+// export function onNavigate(newIndex) {
+//   currentQuestionIndex = newIndex; // Update the current question index
+//   displayQuestion(currentQuestionIndex, questions, markedQuestions); // Display the new question
+//   createPagination(currentQuestionIndex, questions.length, onNavigate); // Update the pagination
+// }

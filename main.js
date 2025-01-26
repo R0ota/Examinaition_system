@@ -5,7 +5,7 @@ import { timeDown } from "./timer.js";
 import { submitAction } from "./submit.js";
 import { displayQuestion } from "./displayQuestion.js";
 import { updateMarkedQuestions } from "./markQuestion.js";
-
+// import{onNavigate} from "./pagination.js"
 const questionContainer = document.querySelector(".question");
 const optionsContainer = document.querySelector(".options");
 const markedList = document.querySelector(".marked-list");
@@ -17,6 +17,7 @@ let markedQuestions = [];
 timeDown();
 
 // Function to handle navigation between questions
+// onNavigate(newIndex);
 function onNavigate(newIndex) {
   currentQuestionIndex = newIndex; // Update the current question index
   displayQuestion(currentQuestionIndex, questions, markedQuestions); // Display the new question
@@ -30,7 +31,7 @@ createPagination(currentQuestionIndex, questions.length, onNavigate);
 displayQuestion(currentQuestionIndex, questions, markedQuestions);
 
 // Function to update marked questions
-updateMarkedQuestions(markedQuestions, onNavigate); // **new**: Added callback `onNavigate`
+updateMarkedQuestions(markedQuestions, onNavigate); 
 
 // Handle flagging a question
 document.querySelector(".flag-button").addEventListener("click", () => {
@@ -39,9 +40,10 @@ document.querySelector(".flag-button").addEventListener("click", () => {
     markedQuestions,
     (updatedList) => {
       markedQuestions = updatedList; // Update the marked questions array
-      updateMarkedQuestions(markedQuestions, onNavigate); // **new**: Pass `onNavigate`
+      updateMarkedQuestions(markedQuestions, onNavigate); // Update the DOM
     }
   );
+
 });
 
 // Handle submit action
