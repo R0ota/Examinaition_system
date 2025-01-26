@@ -46,15 +46,15 @@ body {
 
 .flag-icon {
   cursor: pointer;
-  width: 24px;
-  height: 24px;
-  fill: #007bff;
-  transition: fill 0.3s, transform 0.3s;
+  width: 20px;
+  height: 20px;
+  fill: gray;
+  margin-left: 10px;
+  transition: fill 0.3s ease;
 }
 
-.flag-icon:hover {
-  fill: #0056b3;
-  transform: scale(1.2);
+.flag-icon.flagged {
+  fill: red;
 }
 
 .options {

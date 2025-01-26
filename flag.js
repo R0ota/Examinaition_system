@@ -1,11 +1,11 @@
 export function handleFlagQuestion(
   questionId,
   markedQuestions,
-  updateMarkedQuestions
+  updateCallback
 ) {
-  // Prevent duplicate flags
-  if (!markedQuestions.includes(questionId)) {
-    markedQuestions.push(questionId);
-    updateMarkedQuestions();
-  }
+  const updatedList = markedQuestions.includes(questionId)
+    ? markedQuestions.filter((id) => id !== questionId)
+    : [...markedQuestions, questionId];
+
+  updateCallback(updatedList); // Update flagged questions
 }
