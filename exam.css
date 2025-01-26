@@ -43,6 +43,11 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+.question-text{
+  display: flex;
+justify-content: space-between;
+width: 100%;
+}
 
 .flag-icon {
   cursor: pointer;

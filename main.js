@@ -5,6 +5,7 @@ import { timeDown } from "./timer.js";
 import { submitAction } from "./submit.js";
 import { displayQuestion } from "./displayQuestion.js";
 import { updateMarkedQuestions } from "./markQuestion.js";
+
 // import{onNavigate} from "./pagination.js"
 const questionContainer = document.querySelector(".question");
 const optionsContainer = document.querySelector(".options");
@@ -34,7 +35,7 @@ displayQuestion(currentQuestionIndex, questions, markedQuestions);
 updateMarkedQuestions(markedQuestions, onNavigate); 
 
 // Handle flagging a question
-document.querySelector(".flag-button").addEventListener("click", () => {
+document.querySelector(".flag-icon ").addEventListener("click", () => {
   handleFlagQuestion(
     currentQuestionIndex + 1, // Pass the current question ID
     markedQuestions,
@@ -43,7 +44,6 @@ document.querySelector(".flag-button").addEventListener("click", () => {
       updateMarkedQuestions(markedQuestions, onNavigate); // Update the DOM
     }
   );
-
 });
 
 // Handle submit action

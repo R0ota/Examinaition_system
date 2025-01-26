@@ -1,5 +1,9 @@
 //displayQuestion.js
 import { updateMarkedQuestions } from "./markQuestion.js";
+import { setAnswers, getAnswers, calculateScore } from "./savedAnswers.js";
+import { questions } from "./questions.js";
+
+console.log(questions,);
 
 export function displayQuestion(
   index,
@@ -9,8 +13,8 @@ export function displayQuestion(
 ) {
   const questionContainer = document.querySelector(".question");
   const optionsContainer = document.querySelector(".options");
-
   const currentQuestion = questions[index];
+  const savedAnswer = getAnswers(currentQuestion.id);
 
   // Display question text with a flag icon
   questionContainer.innerHTML = `
@@ -30,6 +34,7 @@ export function displayQuestion(
       </svg>
     </div>
   `;
+  console.log(currentQuestion);
 
   // Display options
   optionsContainer.innerHTML = "";
@@ -39,6 +44,15 @@ export function displayQuestion(
       <input type="radio" name="answer" value="${option.id}" />
       ${option.text}
     `;
+    const input = label.querySelector("input");
+    //if exists in lcal storage check this
+    if (input.value === savedAnswer) {
+      input.checked = true;
+    }
+    input.addEventListener("change", () => {
+      setAnswers(currentQuestion.id, input.value);
+    });
+
     optionsContainer.appendChild(label);
   });
 
