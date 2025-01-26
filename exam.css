@@ -163,10 +163,10 @@ body {
 }
 
 .flag-icon {
-  fill:blue; /* اللون الافتراضي */
-  transition: fill 0.3s ease; /* تأثير سلس لتغيير اللون */
+  fill:blue; 
+  transition: fill 0.3s ease; 
 }
 
 .flagged {
-  fill: red; /* اللون الأزرق عند التفعيل */
+  fill: red; 
 }

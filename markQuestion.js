@@ -1,12 +1,9 @@
-// Function to update marked questions
+// **new**: Updated function to handle updating flagged questions properly
 export function updateMarkedQuestions(
   updatedList = [],
   displayQuestionCallback
 ) {
-  // Get the element for the marked questions list
   const markedListElement = document.querySelector(".marked-list");
-
-  
 
   // Clear the current list in the DOM
   markedListElement.innerHTML = "";
@@ -28,18 +25,20 @@ export function updateMarkedQuestions(
       </svg>
     `;
 
-    // Navigate to the question when the question link is clicked
+    //  Handle question click, and ensure the question index is passed correctly
     li.querySelector(".question-link").addEventListener("click", () => {
       if (typeof displayQuestionCallback === "function") {
-        const questionIndex = id - 1; // Assuming question IDs are 1-based
+        const questionIndex = id - 1; // 1-based ID to 0-based index
         displayQuestionCallback(questionIndex);
       }
     });
 
-    // Remove the question from the marked list when delete icon is clicked
+    // **new**: Handle delete icon click, ensuring the question is removed and flag updated
     li.querySelector(".delete-icon").addEventListener("click", () => {
       const newList = updatedList.filter((questionId) => questionId !== id);
-      updateMarkedQuestions(newList, displayQuestionCallback);
+      updateMarkedQuestions(newList, displayQuestionCallback); // Update list after removal
+      // After deleting, ensure the flag icon is reset
+      document.querySelector(`#flag-${id}`).classList.add("flag-icon"); // back to blue flag
     });
 
     // Append the list item to the DOM

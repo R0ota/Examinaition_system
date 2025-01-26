@@ -1,3 +1,5 @@
+//flag.js
+
 export function handleFlagQuestion(
   questionId,
   markedQuestions,
