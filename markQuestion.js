@@ -1,3 +1,5 @@
+import { onNavigate } from "./main.js";
+
 export function updateMarkedQuestions(
   updatedList = [],
   displayQuestionCallback
@@ -10,6 +12,9 @@ export function updateMarkedQuestions(
   // Iterate through the updated list and dynamically add items to the DOM
   updatedList.forEach((id) => {
     const li = document.createElement("li");
+    li.addEventListener("click", () => {
+      onNavigate(id - 1);
+    });
     li.innerHTML = `
       <span class="question-link">Question ${id}</span>
       <svg 
@@ -37,7 +42,6 @@ export function updateMarkedQuestions(
       const newList = updatedList.filter((questionId) => questionId !== id);
       updateMarkedQuestions(newList, displayQuestionCallback); // Update list after removal
       // After deleting, ensure the flag icon is reset
-      document.querySelector(`#flag-${id}`).classList.add("flag-icon"); // back to blue flag
     });
 
     // Append the list item to the DOM

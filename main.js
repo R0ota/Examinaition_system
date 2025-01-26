@@ -19,7 +19,7 @@ timeDown();
 
 // Function to handle navigation between questions
 // onNavigate(newIndex);
-function onNavigate(newIndex) {
+export function onNavigate(newIndex) {
   currentQuestionIndex = newIndex; // Update the current question index
   displayQuestion(currentQuestionIndex, questions, markedQuestions); // Display the new question
   createPagination(currentQuestionIndex, questions.length, onNavigate); // Update the pagination
@@ -32,7 +32,7 @@ createPagination(currentQuestionIndex, questions.length, onNavigate);
 displayQuestion(currentQuestionIndex, questions, markedQuestions);
 
 // Function to update marked questions
-updateMarkedQuestions(markedQuestions, onNavigate); 
+updateMarkedQuestions(markedQuestions, onNavigate);
 
 // Handle flagging a question
 document.querySelector(".flag-icon ").addEventListener("click", () => {
