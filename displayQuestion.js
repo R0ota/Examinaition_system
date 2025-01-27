@@ -1,22 +1,23 @@
 import { setAnswers, getAnswers, calculateScore } from "./savedAnswers.js";
-import { questions } from "./questions.js";
 import { handleFlagQuestion } from "./flag.js";
 import { updateMarkedQuestions } from "./markQuestion.js";
 
 export function displayQuestion(
-  index,
-  questions,
-  markedQuestions,
-  setCurrentQuestionIndex
+  index, // Current question index
+  questions, // List of all questions
+  markedQuestions, // List of flagged questions
+  setCurrentQuestionIndex // Function to update the current question index
 ) {
   const questionContainer = document.querySelector(".question");
   const optionsContainer = document.querySelector(".options");
+  const flaggedQuestionsContainer = document.querySelector(".marked-list");
   const currentQuestion = questions[index];
   const savedAnswer = getAnswers(currentQuestion.id);
 
-  // Display question text
+  // Display question text with number
   questionContainer.innerHTML = `
     <div class="question-text">
+      <span class="question-number">Question ${index + 1}: </span>
       ${currentQuestion.question}
       <svg 
         class="flag-icon ${
@@ -41,13 +42,16 @@ export function displayQuestion(
         currentQuestion.id, // Current question ID
         markedQuestions, // Current marked questions
         (updatedList) => {
-          updateMarkedQuestions(updatedList); // Update the marked list in the UI
+          markedQuestions = updatedList; // Update the flagged questions list
+          updateMarkedQuestions(markedQuestions); // Re-render flagged questions
+
+          // Re-render the question to update the flag status
           displayQuestion(
             index,
             questions,
-            updatedList,
+            markedQuestions,
             setCurrentQuestionIndex
-          ); // Re-render the question
+          );
         }
       );
     });
@@ -74,5 +78,5 @@ export function displayQuestion(
     optionsContainer.appendChild(label);
   });
 
-  calculateScore(questions);
+  calculateScore(questions); // Update the score
 }
