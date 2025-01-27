@@ -1,9 +1,7 @@
-//displayQuestion.js
-import { updateMarkedQuestions } from "./markQuestion.js";
-import { setAnswers, getAnswers, calculateScore} from "./savedAnswers.js";
+import { setAnswers, getAnswers, calculateScore } from "./savedAnswers.js";
 import { questions } from "./questions.js";
-
-console.log(questions,);
+import { handleFlagQuestion } from "./flag.js";
+import { updateMarkedQuestions } from "./markQuestion.js";
 
 export function displayQuestion(
   index,
@@ -16,7 +14,7 @@ export function displayQuestion(
   const currentQuestion = questions[index];
   const savedAnswer = getAnswers(currentQuestion.id);
 
-  // Display question text with a flag icon
+  // Display question text
   questionContainer.innerHTML = `
     <div class="question-text">
       ${currentQuestion.question}
@@ -34,7 +32,26 @@ export function displayQuestion(
       </svg>
     </div>
   `;
-  console.log(currentQuestion);
+
+  // Attach the flagging functionality
+  const flagIcon = document.querySelector(".flag-icon");
+  if (flagIcon) {
+    flagIcon.addEventListener("click", () => {
+      handleFlagQuestion(
+        currentQuestion.id, // Current question ID
+        markedQuestions, // Current marked questions
+        (updatedList) => {
+          updateMarkedQuestions(updatedList); // Update the marked list in the UI
+          displayQuestion(
+            index,
+            questions,
+            updatedList,
+            setCurrentQuestionIndex
+          ); // Re-render the question
+        }
+      );
+    });
+  }
 
   // Display options
   optionsContainer.innerHTML = "";
@@ -45,37 +62,17 @@ export function displayQuestion(
       ${option.text}
     `;
     const input = label.querySelector("input");
-    //if exists in local storage check this
+
     if (input.value === savedAnswer) {
       input.checked = true;
     }
-input.addEventListener("change", () => {
-  setAnswers(currentQuestion.id, input.value, questions); // Save answer and update score
-});
+
+    input.addEventListener("change", () => {
+      setAnswers(currentQuestion.id, input.value, questions); // Save the answer
+    });
 
     optionsContainer.appendChild(label);
   });
+
   calculateScore(questions);
-  
-  // Handle flagging functionality
-  const flagIcon = document.querySelector(".flag-icon");
-  if (flagIcon) {
-    flagIcon.addEventListener("click", () => {
-      let updatedList;
-      if (markedQuestions.includes(currentQuestion.id)) {
-        // Remove from flagged list
-        updatedList = markedQuestions.filter((id) => id !== currentQuestion.id);
-      } else {
-        // Add to flagged list
-        updatedList = [...markedQuestions, currentQuestion.id];
-      }
-
-      // Update the marked questions list
-      updateMarkedQuestions(updatedList);
-
-      // Re-render the question to update the flag icon
-      displayQuestion(index, questions, updatedList, setCurrentQuestionIndex);
-    });
-  }
-
 }
