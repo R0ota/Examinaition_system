@@ -40,7 +40,7 @@ async function initializeApp() {
   timeDown();
   createPagination(currentQuestionIndex, questions.length, onNavigate);
   displayQuestion(currentQuestionIndex, questions, markedQuestions, onNavigate);
-  submitAction();
+  submitAction(questions);
 }
 
 initializeApp();
