@@ -8,6 +8,24 @@ const passwordInput = document.getElementById("password");
 console.log(savedMail);
 console.log(savedPass);
 
+// Disable back button if there is saved data
+if (savedMail && savedPass) {
+  // Change the hash to disable the back button
+  window.location.hash = "no-back-button";
+
+  // Listen for the hash change to prevent going back
+  window.onhashchange = function() {
+    window.location.hash = "no-back-button";
+  };
+
+  // Override the default back button behavior
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "Backspace" || (e.altKey && (e.key === "ArrowLeft" || e.key === "ArrowRight"))) {
+      e.preventDefault();
+    }
+  });
+}
+
 function validateAll() {
   const email = emailInput.value.trim();
   const password = passwordInput.value.trim();
