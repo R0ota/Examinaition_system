@@ -1,50 +1,51 @@
-import { questions } from "./questions.js";
 import { createPagination } from "./pagination.js";
-import { handleFlagQuestion } from "./flag.js";
 import { timeDown } from "./timer.js";
 import { submitAction } from "./submit.js";
 import { displayQuestion } from "./displayQuestion.js";
-import { updateMarkedQuestions } from "./markQuestion.js";
 
-// import{onNavigate} from "./pagination.js"
-const questionContainer = document.querySelector(".question");
-const optionsContainer = document.querySelector(".options");
-const markedList = document.querySelector(".marked-list");
+let currentQuestionIndex = 0; // Current question index
+let markedQuestions = []; // Array of flagged questions
+let questions = []; // Array to store fetched questions
 
-let currentQuestionIndex = 0;
-let markedQuestions = [];
-
-// Start the timer
-timeDown();
-
-// Function to handle navigation between questions
-// onNavigate(newIndex);
-export function onNavigate(newIndex) {
-  currentQuestionIndex = newIndex; // Update the current question index
-  displayQuestion(currentQuestionIndex, questions, markedQuestions); // Display the new question
-  createPagination(currentQuestionIndex, questions.length, onNavigate); // Update the pagination
+// Fetch questions dynamically from JSON
+async function fetchQuestions() {
+  try {
+    const response = await fetch("./questions.json");
+    if (!response.ok) {
+      throw new Error(`Failed to fetch questions: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching questions:", error);
+    return [];
+  }
 }
 
-// Initialize pagination
-createPagination(currentQuestionIndex, questions.length, onNavigate);
+// Navigate between questions
+export function onNavigate(newIndex) {
+  currentQuestionIndex = newIndex; // Update the current index
+  displayQuestion(currentQuestionIndex, questions, markedQuestions, onNavigate);
+  createPagination(currentQuestionIndex, questions.length, onNavigate);
+}
 
-// Display the first question
-displayQuestion(currentQuestionIndex, questions, markedQuestions);
+// Initialize the quiz application
+async function initializeApp() {
+  questions = await fetchQuestions();
 
-// Function to update marked questions
-updateMarkedQuestions(markedQuestions, onNavigate);
+  if (questions.length === 0) {
+    console.error("No questions available.");
+    return;
+  }
 
-// Handle flagging a question
-document.querySelector(".flag-icon ").addEventListener("click", () => {
-  handleFlagQuestion(
-    currentQuestionIndex + 1, // Pass the current question ID
-    markedQuestions,
-    (updatedList) => {
-      markedQuestions = updatedList; // Update the marked questions array
-      updateMarkedQuestions(markedQuestions, onNavigate); // Update the DOM
-    }
-  );
-});
+  timeDown(300, () => {
+    alert("Time is up!");
+    // Redirect or handle timeout logic
+    window.location.href = "/timeout.html";
+  });
 
-// Handle submit action
-submitAction();
+  createPagination(currentQuestionIndex, questions.length, onNavigate);
+  displayQuestion(currentQuestionIndex, questions, markedQuestions, onNavigate);
+  submitAction();
+}
+
+initializeApp();
