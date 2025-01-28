@@ -8,6 +8,7 @@ let markedQuestions = []; // Array of flagged questions
 let questions = []; // Array to store fetched questions
 
 // Fetch questions dynamically from JSON
+
 async function fetchQuestions() {
   try {
     const response = await fetch("./questions.json");
@@ -36,13 +37,7 @@ async function initializeApp() {
     console.error("No questions available.");
     return;
   }
-
-  timeDown(300, () => {
-    alert("Time is up!");
-    // Redirect or handle timeout logic
-    window.location.href = "/timeout.html";
-  });
-
+  timeDown();
   createPagination(currentQuestionIndex, questions.length, onNavigate);
   displayQuestion(currentQuestionIndex, questions, markedQuestions, onNavigate);
   submitAction();
