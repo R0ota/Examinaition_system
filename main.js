@@ -1,27 +1,51 @@
-import { questions } from "./questions.js";
 import { createPagination } from "./pagination.js";
 import { timeDown } from "./timer.js";
 import { submitAction } from "./submit.js";
 import { displayQuestion } from "./displayQuestion.js";
 
-let currentQuestionIndex = 0;
-let markedQuestions = [];
+let currentQuestionIndex = 0; // Current question index
+let markedQuestions = []; // Array of flagged questions
+let questions = []; // Array to store fetched questions
 
-// Start the timer
-timeDown();
-
-// Function to handle navigation between questions
-export function onNavigate(newIndex) {
-  currentQuestionIndex = newIndex; // Update the current question index
-  displayQuestion(currentQuestionIndex, questions, markedQuestions, onNavigate); // Display the new question
-  createPagination(currentQuestionIndex, questions.length, onNavigate); // Update the pagination
+// Fetch questions dynamically from JSON
+async function fetchQuestions() {
+  try {
+    const response = await fetch("./questions.json");
+    if (!response.ok) {
+      throw new Error(`Failed to fetch questions: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching questions:", error);
+    return [];
+  }
 }
 
-// Initialize pagination
-createPagination(currentQuestionIndex, questions.length, onNavigate);
+// Navigate between questions
+export function onNavigate(newIndex) {
+  currentQuestionIndex = newIndex; // Update the current index
+  displayQuestion(currentQuestionIndex, questions, markedQuestions, onNavigate);
+  createPagination(currentQuestionIndex, questions.length, onNavigate);
+}
 
-// Display the first question
-displayQuestion(currentQuestionIndex, questions, markedQuestions, onNavigate);
+// Initialize the quiz application
+async function initializeApp() {
+  questions = await fetchQuestions();
 
-// Handle submit action
-submitAction();
+  if (questions.length === 0) {
+    console.error("No questions available.");
+    return;
+  }
+
+  timeDown(300, () => {
+    alert("Time is up!");
+    // Redirect or handle timeout logic
+    window.location.href = "/timeout.html";
+  });
+
+  createPagination(currentQuestionIndex, questions.length, onNavigate);
+  displayQuestion(currentQuestionIndex, questions, markedQuestions, onNavigate);
+  submitAction();
+}
+
+initializeApp();

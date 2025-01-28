@@ -1,20 +1,20 @@
 //a file to save selected answers in local storage
 // //savedAnswers.js
 
-export function setAnswers(questionID, selectedAnswer , questions) {
+export function setAnswers(questionID, selectedAnswer, questions) {
   // if there are prev saved answers get them
   const savedAnswers = JSON.parse(localStorage.getItem("answers")) || {};
   //update the selected saved ans.
   savedAnswers[questionID] = selectedAnswer;
   //save all in local storage
   localStorage.setItem("answers", JSON.stringify(savedAnswers));
-  const score = calculateScore(questions); // حساب السكور
-  console.log("score: ", score); // عرض السكور في الكونسول
+  const score = calculateScore(questions);
+  console.log("score: ", score);
 }
 
 export function getAnswers(questionID) {
-        const savedAnswers = JSON.parse(localStorage.getItem("answers")) || {};
-    return savedAnswers[questionID];
+  const savedAnswers = JSON.parse(localStorage.getItem("answers")) || {};
+  return savedAnswers[questionID];
 }
 
 export function calculateScore(questions) {
@@ -36,13 +36,12 @@ export function calculateScore(questions) {
       // console.log("Correct Answer for Question", question.id);
       score += correctOption.score; // Add score for correct answers
     }
-//  else {
-//   console.log("Wrong Answer for Question", question.id);
-// }
+    //  else {
+    //   console.log("Wrong Answer for Question", question.id);
+    // }
   });
 
   console.log("Final Calculated Score:", score);
   localStorage.setItem("score", score); // Store score after calculation
   return score;
 }
-
