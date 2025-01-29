@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="icon" href="home.png">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Home</h1>
+    <button id="login">Login</button>
+    <button id="signup">Sign Up</button>
+
+    <script>
+const login = document.getElementById("login");
+const signup = document.getElementById("signup");
+login.addEventListener("click",function(){
+    location.href="./Register/login.html";
+} )
+signup.addEventListener("click",function(){
+    location.href="./Register/signUp.html";
+} )
+    </script>
+</body>
+</html>

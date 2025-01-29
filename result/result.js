@@ -2,6 +2,7 @@ const title = document.getElementsByClassName("title")[0];
 const image = document.getElementById("img");
 const userMsg = document.getElementById("msg");
 const scoreMsg = document.getElementById("score");
+const home = document.getElementById("btn");
 
 let score = localStorage.getItem("score");
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -18,7 +19,9 @@ if (score >= 30) {
     scoreMsg.innerText = `${score} / 50`;
     userMsg.innerText = `Sorry ${userName}, You haven't passed the exam!`;
 }
-
+home.addEventListener("click", function () {
+  location.href = "../home.html";
+})
 
 // export function displayResult(totalScore, firstName, lastName) {
 //   const gradeMessage = document.getElementById("gradeMessage");

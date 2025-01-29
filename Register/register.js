@@ -15,6 +15,12 @@ const confirmPasswordValidation = document.getElementById(
   "confirmPassValidation"
 );
 
+//logic to prevent login page to go back here
+history.pushState(null, document.title, location.href);
+window.addEventListener("popstate", function (event) {
+  history.pushState(null, document.title, location.href);
+});
+
 // Regex patterns
 const nameRegex = /^[A-Za-z\s]{3,}$/; // Only letters and spaces
 const emailRegex = /^[A-Za-z0-9._%+-]+@gmail\.com$/; // Valid Gmail format

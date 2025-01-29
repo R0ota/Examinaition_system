@@ -1,3 +1,12 @@
+// //prevent resullt to come back to exam
+function preventBack() {
+  window.history.forward();
+}
+setTimeout(preventBack(), 0);
+window.onunload = function () {
+  null;
+};
+
 import { createPagination } from "./pagination.js";
 import { timeDown } from "./timer.js";
 import { submitAction } from "./submit.js";
@@ -8,7 +17,6 @@ let markedQuestions = []; // Array of flagged questions
 let questions = []; // Array to store fetched questions
 
 // Fetch questions dynamically from JSON
-
 async function fetchQuestions() {
   try {
     const response = await fetch("./questions.json");
@@ -44,5 +52,3 @@ async function initializeApp() {
 }
 
 initializeApp();
-
-
