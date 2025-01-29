@@ -7,10 +7,6 @@ window.onunload = function () {
   null;
 };
 
-import { createPagination } from "./pagination.js";
-import { timeDown } from "./timer.js";
-import { submitAction } from "./submit.js";
-import { displayQuestion } from "./displayQuestion.js";
 // Import required modules for different functionalities
 import { createPagination } from "./pagination.js"; // Handles pagination (next/prev buttons)
 import { timeDown } from "./timer.js"; // Handles countdown timer
