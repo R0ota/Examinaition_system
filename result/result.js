@@ -4,7 +4,8 @@ const userMsg = document.getElementById("msg");
 const scoreMsg = document.getElementById("score");
 
 let score = localStorage.getItem("score");
-let userName = localStorage.getItem("User Name");
+let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+let userName = currentUser.fullName;
 //handle result depend on the score 
 if (score >= 30) {
   title.innerText = "Congratulations!";

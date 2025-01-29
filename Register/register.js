@@ -105,7 +105,7 @@ function validateConfirmPassword() {
 
 // Form submission
 form.addEventListener("submit", function (e) {
-  e.preventDefault(); // Prevent form submission if validation fails
+  e.preventDefault();
 
   const isFirstNameValid = validateName(firstNameInput, firstNameValidation);
   const isLastNameValid = validateName(lastNameInput, lastNameValidation);
@@ -121,17 +121,31 @@ form.addEventListener("submit", function (e) {
     !isConfirmPasswordValid
   ) {
     return;
-  } else {
-    localStorage.setItem(
-      "User Name",
-      firstNameInput.value + " " + lastNameInput.value
-    );
-    localStorage.setItem("Email", emailInput.value);
-    localStorage.setItem("Password", passwordInput.value);
-    // Redirect to login page
-    window.location.href = "login.html";
   }
+
+  let users = JSON.parse(localStorage.getItem("users")) || []; //return saved data ot an empty array;
+
+  //make sure email isn't repeated
+  if (users.some((user) => user.email === emailInput.value)) {
+    emailValidation.innerText = "This Email already exists !";
+    emailValidation.style.display = "block";
+    return;
+  }
+
+  // add new user to the array
+  let newUser = {
+    fullName: firstNameInput.value + " " + lastNameInput.value,
+    email: emailInput.value,
+    password: passwordInput.value,
+  };
+
+  users.push(newUser);
+  localStorage.setItem("users", JSON.stringify(users));
+
+  // locate to login
+  window.location.href = "login.html";
 });
+
 
 // Real-time validation on blur ((leaving the input)).
 firstNameInput.addEventListener("blur", () =>
