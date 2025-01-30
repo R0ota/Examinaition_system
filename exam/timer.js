@@ -14,7 +14,7 @@ export function timeDown() {
     // Stop the timer at 0
     if (time-- <= 0) {
       clearInterval(timerInterval);
-      window.location.href = "/Time out/index.html";
+      window.location.href = "../Time out/index.html";
     }
   }, 1000);
 }

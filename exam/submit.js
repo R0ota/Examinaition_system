@@ -35,7 +35,7 @@ export function submitAction(questions) {
     } else {
       //if all are answered remove err msg and go to result
       if (errorMessage) errorMessage.remove(); 
-      window.location.href = "./result/index.html";
+      window.location.href = "../result/index.html";
     }
   });
 }

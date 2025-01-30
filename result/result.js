@@ -10,17 +10,17 @@ let userName = currentUser.fullName;
 //handle result depend on the score 
 if (score >= 30) {
   title.innerText = "Congratulations!";
-  image.src = "s.jpeg";
+  image.src = "../images/Celebration.gif";
   scoreMsg.innerText = `${score} / 50`;
   userMsg.innerText=`Well done ${userName}, You have passed the exam!`
 } else {
     title.innerText = "Opps!";
-    image.src = "f.jpeg";
+    image.src = "../images/Student stress.gif";
     scoreMsg.innerText = `${score} / 50`;
     userMsg.innerText = `Sorry ${userName}, You haven't passed the exam!`;
 }
 home.addEventListener("click", function () {
-  location.href = "../home.html";
+  location.href = "../Register/home.html";
 })
 
 // export function displayResult(totalScore, firstName, lastName) {

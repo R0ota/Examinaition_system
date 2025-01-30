@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="../exam.png">
+    <link rel="icon" href="../images/exam.png">
     <title>Start Exam</title>
     <link rel="stylesheet" href="syle.css" />
   </head>
   <body>
     <div class="container">
       <h2>Are you ready to start the exam?</h2>
-      <img src="Online test.gif" alt="Start Exam Illustration" />
+      <img src="../images/Online test.gif" alt="Start Exam Illustration" />
       <button onclick="startExam()">Start Exam</button>
     </div>
 
@@ -18,7 +18,8 @@
       function startExam() {
           localStorage.removeItem("answers");
           localStorage.removeItem("score");
-        window.location.href = "../exam.html";
+          localStorage.removeItem("markedQuestions");
+        window.location.href = "../exam/exam.html";
       }
     </script>
   </body>
