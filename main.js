@@ -2,10 +2,10 @@
 function preventBack() {
   window.history.forward();
 }
-setTimeout(preventBack(), 0);
-window.onunload = function () {
-  null;
-};
+setTimeout(preventBack, 0);
+window.addEventListener("popstate", function (event) {
+  preventBack();
+});
 
 // Import required modules for different functionalities
 import { createPagination } from "./pagination.js"; // Handles pagination (next/prev buttons)
@@ -94,3 +94,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, 100);
 });
+
+

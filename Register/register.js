@@ -15,10 +15,13 @@ const confirmPasswordValidation = document.getElementById(
   "confirmPassValidation"
 );
 
-//logic to prevent login page to go back here
-history.pushState(null, document.title, location.href);
+// //prevent resullt to come back to exam
+function preventBack() {
+  window.history.forward();
+}
+setTimeout(preventBack, 0);
 window.addEventListener("popstate", function (event) {
-  history.pushState(null, document.title, location.href);
+  preventBack();
 });
 
 // Regex patterns
