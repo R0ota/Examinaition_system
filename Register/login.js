@@ -8,9 +8,34 @@ const passwordInput = document.getElementById("password");
 const haveAcoount = document.getElementById("haveAcc");
 
 haveAcoount.style.display = "none";
-console.log(savedMail);
-console.log(savedPass);
-  
+
+//hide error msg when entering new input
+emailInput.addEventListener("input", () => {
+  emailValidation.style.display = "none";
+  passwordValidation.style.display = "none";
+  haveAcoount.style.display = "none";
+});
+
+passwordInput.addEventListener("input", () => {
+  passwordValidation.style.display = "none";
+  haveAcoount.style.display = "none";
+});
+
+// required msg on blur
+emailInput.addEventListener("blur", () => {
+  if (!emailInput.value.trim()) {
+    emailValidation.innerText = "Email is required.";
+    emailValidation.style.display = "block";
+  }
+});
+
+passwordInput.addEventListener("blur", () => {
+  if (!passwordInput.value.trim()) {
+    passwordValidation.innerText = "Password is required.";
+    passwordValidation.style.display = "block";
+  }
+});
+
 function validateAll() {
   const email = emailInput.value.trim();
   const password = passwordInput.value.trim();
@@ -26,31 +51,28 @@ function validateAll() {
     return false;
   }
 
-  //get the saved users 
+  // attach saved users
   let users = JSON.parse(localStorage.getItem("users")) || [];
-  //the specific logged user
-  let foundUser = users.find(  //return user object found
+  // if user found or not
+  let foundUser = users.find(
     (user) => user.email === email && user.password === password
   );
-  //if we didn't find the user 
+
   if (!foundUser) {
     passwordValidation.innerText = "Incorrect Email or Password";
     passwordValidation.style.display = "block";
     haveAcoount.style.display = "block";
     return false;
-
   }
 
-  // store the current user
+  // save current user to use his name in result
   localStorage.setItem("currentUser", JSON.stringify(foundUser));
-  emailValidation.style.display = "none";
   return true;
 }
 
-// we save the current user on login
+// on click on submit if all valid go to next page.
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-
   if (validateAll()) {
     window.location.href = "../start exam/index.html";
   }
