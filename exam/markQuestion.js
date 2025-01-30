@@ -2,6 +2,8 @@ import { onNavigate } from "./main.js";
 
 export function updateMarkedQuestions(updatedList = [], questions) {
   const markedListElement = document.querySelector(".marked-list");
+  // retrieve the marked questions from local
+  const savedList = JSON.parse(localStorage.getItem("markedQuestions")) || [];
 
   updatedList.forEach((id) => {
     if (!markedListElement.querySelector(`[data-id="${id}"]`)) {
@@ -29,6 +31,13 @@ export function updateMarkedQuestions(updatedList = [], questions) {
 
         li.querySelector(".delete-icon").addEventListener("click", () => {
           const newList = updatedList.filter((questionId) => questionId !== id);
+
+          //     //  Save the updated flagged list in localStorage
+          const updatedSavedList = savedList.filter((item) => item !== id);
+          localStorage.setItem(
+            "markedQuestions",
+            JSON.stringify(updatedSavedList)
+          );
 
           const flagIcon = document.querySelector(
             `.flag-icon[data-id="${id}"]`
