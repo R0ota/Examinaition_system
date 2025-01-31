@@ -18,24 +18,38 @@ let currentQuestionIndex = 0; // Current active question index
 let markedQuestions = []; // Array to store flagged (marked) questions
 let questions = []; // Array to store fetched questions
 
-// Fetch questions dynamically from JSON
 //  Fetch questions dynamically from the JSON file
 async function fetchQuestions() {
   try {
-    // Request the questions.json file
     const response = await fetch("./questions.json");
-
-    // If fetching fails, throw an error
     if (!response.ok) {
       throw new Error(`Failed to fetch questions: ${response.status}`);
     }
-
-    // Convert the response to JSON and return it
-    return await response.json();
+    const fetchedQuestions = await response.json();
+    console.log(fetchedQuestions);
+    return shuffleArray(fetchedQuestions); // Shuffle the questions before returning
   } catch (error) {
     console.error("Error fetching questions:", error);
     return []; // Return an empty array if fetching fails
   }
+}
+
+function shuffleArray(array) {
+  const shuffled = [...array]; // Clone the array to avoid mutating the original array
+
+  // Perform the shuffle
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
+  }
+
+  // Reassign IDs based on the new order
+  shuffled.forEach((item, index) => {
+    item.id = index + 1; // Assign new IDs starting from 1
+  });
+
+  console.log("Shuffled with new IDs:", shuffled);
+  return shuffled;
 }
 
 //  Navigate between questions
@@ -94,5 +108,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, 100);
 });
-
-
