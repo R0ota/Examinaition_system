@@ -6,7 +6,7 @@ export function timeDown() {
   // Check if there's already a time stored in localStorage, otherwise set it to 230 seconds.
   let time = localStorage.getItem("remainingTime")
     ? parseInt(localStorage.getItem("remainingTime"), 10)
-    : 120;
+    : 250;
   // Set up an interval to update the timer every second.
 
   const timerInterval = setInterval(() => {
