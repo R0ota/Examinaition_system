@@ -16,7 +16,7 @@ export function timeDown() {
     timer.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
     // Change the timer color to red when 30 seconds or less remain.
     if (time <= 30) {
-      timer.style.color = "red";
+      timer.style.color = "#C62E2E";
     }
     // Stop the timer and navigate to a new page when the countdown reaches 0.
     if (time-- <= 0) {
