@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Time Out</title>
     <!-- Link to the external CSS file -->
-     <link rel="icon" href="time.png">
-    <link rel="stylesheet" href="time.css" />
+     <link rel="icon" href="../images/time.png">
+    <link rel="stylesheet" href="./time.css" />
   </head>
   <body>
     <div class="container">
       <h2>Time Out!</h2>
-      <img src="time flies.gif" alt="Time Out" />
+      <img src="../images/time flies.gif" alt="Time Out" />
       <p id="sorry"></p>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Display user name with sorry message
+        // Retrieve the current user data from localStorage
+        let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+        // Extract the fullName from the currentUser object
+        let userName = currentUser ? currentUser.fullName : "User"; // Default to "User" if no name is found
+
+        // Display the user name with the sorry message
         let sorry = document.getElementById("sorry");
-        let userName = localStorage.getItem("User Name") || "User"; // Default if user name is not set
         sorry.innerText = `Sorry ${userName}, Time Is Out!`;
 
         // Replace the current history state

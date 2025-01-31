@@ -25,121 +25,104 @@ body {
   }
 }
 
-/* Container Styling */
 .container {
   width: 90%;
   max-width: 500px;
+  height: 80%;
   background: white;
   border-radius: 15px;
-  padding: 30px;
+  padding: 20px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   text-align: center;
   animation: fadeIn 1s ease-in-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-animation: fadeIn 1s ease-in-out;
 }
 
-/* Fade-in Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(-20px);
-  }
+    -webkit-transform: translateY(-20px);
+    -moz-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+}
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Heading Styling */
 .container h2 {
-  font-size: 24px;
-  color: #1565c0;
-  margin-bottom: 20px;
+  text-align: center;
+  color: #37474F;
+  margin-bottom: 8px;
+  font-size:1.8em;
   font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
 }
 
-/* SVG Styling */
-/* .container svg {
-  width: 30px;
-  height: 30px;
-  fill: #1565c0;
-  margin-left: 10px;
-} */
-
-/* Image Styling */
 .container img {
-  max-width: 100%;
-  height: 50vh;
-  margin-bottom: 20px;
+  max-width: 90%;
+  max-height: 55%;
+  margin-bottom: 5px;
   border-radius: 10px;
-  /* animation: float 3s infinite ease-in-out; */
-  /* -webkit-animation: float 3s infinite ease-in-out; */
+  object-fit: contain;
 }
-
-/* Floating Animation */
-/* @keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-} */
 
 /* Text Styling */
 .container p {
   font-size: 18px;
-  color: #424242;
+  color:  #37474F;
   margin-top: 10px;
   font-weight: bold;
 }
-
+/* Responsive Design */
 /* Responsive Design */
 
 /* For Tablets */
 @media (max-width: 768px) {
   .container {
-    padding: 20px;
-    max-width: 400px;
+    padding: 15px;
+    max-width: 90%;
+    height: 85%;
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 1.6em;
   }
 
   p {
-    font-size: 16px;
+    font-size: 1.1em;
   }
 
-  svg {
-    width: 25px;
-    height: 25px;
+  img {
+    max-height: 50%;
   }
 }
 
 /* For Mobile Devices */
 @media (max-width: 480px) {
   .container {
-    padding: 15px;
-    max-width: 300px;
+    padding: 10px;
+    max-width: 90%;
+    height: 80%;
   }
 
   h2 {
-    font-size: 18px;
+    font-size: 1.4em;
   }
 
   p {
-    font-size: 14px;
+    font-size: 1em;
   }
 
-  svg {
-    width: 20px;
-    height: 20px;
+  img {
+    max-width: 90%;
+    max-height: 45%;
   }
 }
