@@ -27,7 +27,7 @@ body {
 .container {
   width: 90%;
   max-width: 500px;
-  height: 70%;
+  height: 80%;
   background: white;
   border-radius: 15px;
   padding: 20px;
@@ -67,13 +67,21 @@ body {
 .container img {
   max-width: 100%;
   max-height: 55%;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   border-radius: 10px;
   object-fit: contain;
 }
+#score{
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-bottom: 0;
+}
 
+#msg{
+  font-size: 1em;
+}
 .container p {
-  font-size: 18px;
+  /* font-size: 18px; */
   color: #424242;
   margin: 5px 0;
 }
@@ -113,8 +121,8 @@ button:hover {
   }
 
   .container p {
-    font-size: 16px;
-  }
+    font-size:1.5em ;  }
+
 
   .container img {
     max-height: 40%;
