@@ -1,15 +1,3 @@
-
-// const submitButton = document.querySelector(".submit-button");
-// // Submit button handler
-// export function submitAction() {
-//   submitButton.addEventListener("click", () => {
-//     // alert("Submit functionality not implemented yet!");
-//     // let score = localStorage.getItem("score");
-//       window.location.href = "./result/index.html";
-//   });
-// };
-
-
 const submitButton = document.querySelector(".submit-button");
 
 // Submit button handler
@@ -34,7 +22,7 @@ export function submitAction(questions) {
       }
     } else {
       //if all are answered remove err msg and go to result
-      if (errorMessage) errorMessage.remove(); 
+      if (errorMessage) errorMessage.remove();
       window.location.href = "../result/index.html";
     }
   });

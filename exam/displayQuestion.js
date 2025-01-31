@@ -1,15 +1,20 @@
+// Import necessary modules and functions.
 import { toggleFlag } from "./flag.js";
 import { updateMarkedQuestions } from "./markQuestion.js";
 import { setAnswers, getAnswers } from "./savedAnswers.js";
 import { calculateScore } from "./score.js";
 
+// Function to display a specific question and its options in the UI.
 export function displayQuestion(index, questions, markedQuestions, onNavigate) {
+  // Select HTML elements where the question and options will be displayed.
   const questionContainer = document.querySelector(".question");
   const optionsContainer = document.querySelector(".options");
+  // Retrieve the current question based on the index provided.
   const currentQuestion = questions[index];
+  // Fetch the saved answer for this question, if it exists.
   const savedAnswer = getAnswers(currentQuestion.id);
 
-//display question with flag
+  // Display the current question text and a flag icon that indicates whether the question is marked.
   questionContainer.innerHTML = `
     <div class="question-text">
       <span>Question ${index + 1}: </span>${currentQuestion.question}
@@ -18,7 +23,7 @@ export function displayQuestion(index, questions, markedQuestions, onNavigate) {
           markedQuestions.includes(currentQuestion.id) ? "flagged" : ""
         }" 
         data-id="${currentQuestion.id}"
-     xmlns="http://www.w3.org/2000/svg"
+        xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 448 512"
         title="Flag"
       >
@@ -29,21 +34,21 @@ export function displayQuestion(index, questions, markedQuestions, onNavigate) {
     </div>
   `;
 
-  //flag toggle
+  // Add an event listener to the flag icon for toggling the flagged status of the question.
   const flagIcon = document.querySelector(".flag-icon");
   flagIcon.addEventListener("click", () => {
     toggleFlag(
       currentQuestion.id,
       markedQuestions,
       (updatedList) => {
-        markedQuestions = updatedList;
-        updateMarkedQuestions(markedQuestions, questions);
+        markedQuestions = updatedList; // Update the marked questions list.
+        updateMarkedQuestions(markedQuestions, questions); // Reflect the update in the UI.
       },
       flagIcon
     );
   });
 
-  //display options
+  // Display options for the current question and set up event listeners for selection.
   optionsContainer.innerHTML = "";
   currentQuestion.options.forEach((option) => {
     const label = document.createElement("label");
@@ -53,32 +58,33 @@ export function displayQuestion(index, questions, markedQuestions, onNavigate) {
     `;
     const input = label.querySelector("input");
     if (input.value === savedAnswer) {
-      input.checked = true;
+      input.checked = true; // Mark the saved answer as checked if it exists.
     }
 
     input.addEventListener("change", () => {
-      setAnswers(currentQuestion.id, input.value);
-      calculateScore(questions); //change score when ans is changed
+      setAnswers(currentQuestion.id, input.value); // Save the selected answer.
+      calculateScore(questions); // Recalculate score based on new answer.
     });
 
     optionsContainer.appendChild(label);
   });
 
+  // Setup navigation buttons for moving to next and previous questions.
   if (onNavigate) {
     const nextButton = document.querySelector(".next-button");
+    const prevButton = document.querySelector(".prev-button");
     if (nextButton) {
       nextButton.addEventListener("click", () => {
         if (index < questions.length - 1) {
-          onNavigate(index + 1);
+          onNavigate(index + 1); // Navigate to the next question.
         }
       });
     }
 
-    const prevButton = document.querySelector(".prev-button");
     if (prevButton) {
       prevButton.addEventListener("click", () => {
         if (index > 0) {
-          onNavigate(index - 1);
+          onNavigate(index - 1); // Navigate to the previous question.
         }
       });
     }

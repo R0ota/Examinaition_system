@@ -1,14 +1,21 @@
+// Import the navigation function from the main module.
 import { onNavigate } from "./main.js";
 
+// Function to update the display and storage of marked questions.
 export function updateMarkedQuestions(updatedList = [], questions) {
+  // Select the HTML element where marked questions are displayed.
   const markedListElement = document.querySelector(".marked-list");
-  // retrieve the marked questions from local
+  // Retrieve the currently marked questions from local storage or initialize an empty list if none exist.
   const savedList = JSON.parse(localStorage.getItem("markedQuestions")) || [];
 
+  // Iterate over each question ID in the updated list.
   updatedList.forEach((id) => {
+    // Check if the question is not already displayed in the marked list.
     if (!markedListElement.querySelector(`[data-id="${id}"]`)) {
+      // Find the corresponding question object by its ID.
       const question = questions.find((q) => q.id === id);
       if (question) {
+        // Create a new list item for the question.
         const li = document.createElement("li");
         li.setAttribute("data-id", id);
         li.innerHTML = `
@@ -25,20 +32,23 @@ export function updateMarkedQuestions(updatedList = [], questions) {
           </svg>
         `;
 
+        // Add an event listener to navigate to the question when clicked.
         li.querySelector(".question-link").addEventListener("click", () => {
           onNavigate(id - 1);
         });
 
+        // Add an event listener to remove the question from the marked list when the delete icon is clicked.
         li.querySelector(".delete-icon").addEventListener("click", () => {
           const newList = updatedList.filter((questionId) => questionId !== id);
 
-          //     //  Save the updated flagged list in localStorage
+          // Update the marked questions list in local storage after removal.
           const updatedSavedList = savedList.filter((item) => item !== id);
           localStorage.setItem(
             "markedQuestions",
             JSON.stringify(updatedSavedList)
           );
 
+          // Remove the flagged class from the flag icon if it exists.
           const flagIcon = document.querySelector(
             `.flag-icon[data-id="${id}"]`
           );
@@ -46,9 +56,11 @@ export function updateMarkedQuestions(updatedList = [], questions) {
             flagIcon.classList.remove("flagged");
           }
 
+          // Remove the question list item from the marked list element.
           markedListElement.querySelector(`[data-id="${id}"]`)?.remove();
         });
 
+        // Append the newly created list item to the marked questions list.
         markedListElement.appendChild(li);
       }
     }
