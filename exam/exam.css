@@ -9,8 +9,6 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  /* background: linear-gradient(135deg, #6ee7b7, #3b82f6);
-  background-size: cover; */
   background: linear-gradient(to bottom, #e0f7fa, #bbdefb);
   background-size: 200% 200%;
   animation: gradientBG 15s ease infinite;
