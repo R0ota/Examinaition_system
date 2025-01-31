@@ -8,6 +8,10 @@ body{
     font-family: Arial, sans-serif;
 
 }
+html, body {
+    overflow: hidden;
+}
+
 /* Background Animation */
 @keyframes gradientBackground {
   0% {
@@ -22,6 +26,8 @@ body{
 }
 .regCard{
     width: 60vw;
+     max-height: 80vh;
+    overflow: hidden;
     height: 78vh;
     background: #fafafb;
     display: flex;
@@ -39,12 +45,12 @@ body{
 }
 
 .cardContainer{
-    /* width: 100vw; */
-    height: 100vh;
+   height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    overflow: hidden;
     
 }
 
@@ -73,7 +79,7 @@ form > div {
 label {
     margin-left: 0.5vw;
     text-align: left; 
-    font-size: 12px;
+    font-size: 14px;
 }
 
 input {
@@ -125,6 +131,7 @@ span{
     text-align: left;
     margin: 0;
     margin-left: 0.5vw;
+    margin-top: 1em;
 
 }
 
@@ -132,6 +139,29 @@ span{
     font-size: 0.8em;
     color: #000;
     text-align: center;
+}
+button {
+  width: 12em;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  background: #90CAF9;
+  color: #37474F;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid #37474F;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px auto 0; 
+}
+
+button:hover {
+  border: 3px solid #90CAF9;
+  background: #90CAF9;
+  color: #fafafb;
+  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 @media(max-width:700px){
@@ -153,5 +183,10 @@ span{
     padding-top: 4em;
     padding-bottom: 4em;
 }
-
+form div{
+  width: 100%;
+}
+#registrationForm{
+  width: 85%;
+}
 }

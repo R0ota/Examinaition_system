@@ -4,13 +4,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/home.png">
     <title>Home</title>
+    <style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #e0f7fa, #bbdefb);
+  overflow: hidden;
+  animation: gradientBackground 10s infinite alternate;
+}
+
+@keyframes gradientBackground {
+  0% {
+    background: linear-gradient(to bottom, #e0f7fa, #bbdefb);
+  }
+  50% {
+    background: linear-gradient(to bottom, #bbdefb, #e0f7fa);
+  }
+  100% {
+    background: linear-gradient(to bottom, #e0f7fa, #bbdefb);
+  }
+}
+        .container {
+  width: 90%;
+  max-width: 850px;
+  height: 80%;
+  background: white;
+  border-radius: 15px;
+  padding: 4.5em;
+  box-sizing: border-box;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+    -webkit-transform: translateY(-20px);
+    -moz-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+}
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.container img{
+    height: 60%;
+}
+.container h1 {
+  text-align: center;
+  color: #37474F;
+  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: bold;
+}
+.container button {
+  width: 180px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  background: #90CAF9;
+  color: #37474F;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid #37474F;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px auto 0; 
+}
+
+button:hover {
+  border: 3px solid #90CAF9;
+  background: #90CAF9;
+  color: #fafafb;
+  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 700px) {
+  .container {
+    width: 90%;
+    max-width: 300px;
+    padding: 15px;
+    height: 70%;
+  }
+
+  .container h1 {
+    font-size: 20px;
+  }
+
+  .container p {
+    font-size: 16px;
+  }
+
+  .container img {
+    max-height: 40%;
+  }
+
+  .container button {
+    width: 200px;
+    font-size: 16px;
+    
+  }
+  .btn-cont{
+    margin-bottom: 2em;
+  }
+}
+
+
+    </style>
 </head>
 <body>
-
-    <h1>Home</h1>
+<div class="container">
+<h1>Examination System</h1>
+    <img src="../images/Learning.gif" alt="">
+    <div class="btn-cont">
     <button id="login">Login</button>
     <button id="signup">Sign Up</button>
+    </div>
+
+</div>
+    
     <script>
 
 const login = document.getElementById("login");

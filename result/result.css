@@ -38,13 +38,18 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  -webkit-animation: fadeIn 1s ease-in-out;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(-20px);
-  }
+    -webkit-transform: translateY(-20px);
+    -moz-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+}
   to {
     opacity: 1;
     transform: translateY(0);
