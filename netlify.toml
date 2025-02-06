@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "/*"
+  from = "/"
   to = "/register/home.html"
   status = 200
