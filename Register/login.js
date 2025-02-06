@@ -7,6 +7,20 @@ const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const haveAcoount = document.getElementById("haveAcc");
 
+//eye in pass
+const togglePassword = document.getElementById("togglePassword");
+togglePassword.addEventListener("click", function () {
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    this.classList.remove("fa-eye-slash");
+    this.classList.add("fa-eye");
+  } else {
+    passwordInput.type = "password";
+    this.classList.remove("fa-eye");
+    this.classList.add("fa-eye-slash");
+  }
+});
+
 haveAcoount.style.display = "none";
 
 //hide error msg when entering new input

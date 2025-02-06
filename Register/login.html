@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="../images/login.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="register.css" />
   <title>Login</title>
   <style>
@@ -20,9 +21,12 @@
           <input style="height: 3.5em; margin-top: 0.5em;" id="email" type="text" placeholder="Example43@gmail.com" />
           <span id="emailValidation" class="validation"></span>
         </div>
-        <div>
+<div class="password-container">
           <label for="password">Password</label>
-          <input style="height: 3.5em;margin-top: 0.5em;" id="password" type="password" placeholder="Password" />
+          <div class="password-wrapper">
+            <input id="password" type="password" placeholder="Password" />
+            <i class="fa-solid fa-eye-slash" id="togglePassword"></i>
+          </div>
           <span id="passValidation" class="validation"></span>
         </div>
         

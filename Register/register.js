@@ -14,6 +14,20 @@ const passwordValidation = document.getElementById("passValidation");
 const confirmPasswordValidation = document.getElementById(
   "confirmPassValidation"
 );
+//eye in pass
+const togglePassword = document.getElementById("togglePassword");
+togglePassword.addEventListener("click", function () {
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    this.classList.remove("fa-eye-slash");
+    this.classList.add("fa-eye");
+  } else {
+    passwordInput.type = "password";
+    this.classList.remove("fa-eye");
+    this.classList.add("fa-eye-slash");
+  }
+});
+
 
 // //prevent resullt to come back to exam
 function preventBack() {
@@ -23,6 +37,7 @@ setTimeout(preventBack, 0);
 window.addEventListener("popstate", function (event) {
   preventBack();
 });
+
 
 // Regex patterns
 const nameRegex = /^[A-Za-z\s]{3,}$/; // Only letters and spaces
