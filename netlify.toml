@@ -2,3 +2,33 @@
   from = "/"
   to = "/register/home.html"
   status = 200
+
+[[redirects]]
+  from = "/login"
+  to = "/register/login.html"
+  status = 200
+
+[[redirects]]
+  from = "/signup"
+  to = "/register/signUp.html"
+  status = 200
+
+[[redirects]]
+  from = "/exam"
+  to = "/exam/exam.html"
+  status = 200
+
+[[redirects]]
+  from = "/result"
+  to = "/result/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/start-exam"
+  to = "/start exam/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/time-out"
+  to = "/Time out/index.html"
+  status = 200
