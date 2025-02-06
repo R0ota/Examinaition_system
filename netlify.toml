@@ -1,16 +1,6 @@
 [[redirects]]
   from = "/"
-  to = "/register/home.html"
-  status = 200
-
-[[redirects]]
-  from = "/login"
-  to = "/register/login.html"
-  status = 200
-
-[[redirects]]
-  from = "/signup"
-  to = "/register/signUp.html"
+  to = "/register/:splat"
   status = 200
 
 [[redirects]]
@@ -24,11 +14,11 @@
   status = 200
 
 [[redirects]]
-  from = "/start-exam"
+  from = "/start%20exam"
   to = "/start exam/index.html"
   status = 200
 
 [[redirects]]
-  from = "/time-out"
+  from = "/time%20out"
   to = "/Time out/index.html"
   status = 200
