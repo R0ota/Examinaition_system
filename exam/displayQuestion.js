@@ -18,7 +18,7 @@ export function displayQuestion(index, questions, markedQuestions, onNavigate) {
   questionContainer.innerHTML = `
     <div class="question-text">
       <span>Question ${index + 1}: </span>${currentQuestion.question}
-      <svg 
+      <svg
         class="flag-icon ${
           markedQuestions.includes(currentQuestion.id) ? "flagged" : ""
         }" 
@@ -33,9 +33,11 @@ export function displayQuestion(index, questions, markedQuestions, onNavigate) {
       </svg>
     </div>
   `;
-
-  // Add an event listener to the flag icon for toggling the flagged status of the question.
-  const flagIcon = document.querySelector(".flag-icon");
+  // Select the flag icon for the current question.
+  const flagIcon = questionContainer.querySelector(
+    `.flag-icon[data-id="${currentQuestion.id}"]`
+  );
+  // Add a click event listener to the flag icon to toggle the question's status.
   flagIcon.addEventListener("click", () => {
     toggleFlag(
       currentQuestion.id,
