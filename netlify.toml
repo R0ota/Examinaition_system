@@ -1,6 +1,6 @@
 [[redirects]]
-  from = "/"
-  to = "/register/:splat"
+  from = "/*"
+  to = "/Register/:splat"
   status = 200
 
 [[redirects]]
@@ -19,6 +19,6 @@
   status = 200
 
 [[redirects]]
-  from = "/time%20out"
+  from = "/Time%20out"
   to = "/Time out/index.html"
   status = 200
