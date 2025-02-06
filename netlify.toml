@@ -1,0 +1,24 @@
+[[redirects]]
+  from = "/*"
+  to = "/Register/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/exam"
+  to = "/exam/exam.html"
+  status = 200
+
+[[redirects]]
+  from = "/result"
+  to = "/result/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/start%20exam"
+  to = "/start exam/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/Time%20out"
+  to = "/Time out/index.html"
+  status = 200
