@@ -30,18 +30,26 @@ body {
   gap: 30px;
   width: 80%;
   max-width: 1200px;
-  flex-wrap: wrap;
+  /*align-items: center;
+  */justify-content: center;
+  /* flex-wrap: wrap; */
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   overflow: hidden;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .quiz-container {
   background: #ffffff;
   border-radius: 10px;
+  width: 100%;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   padding: 20px;
   flex: 3;
+
 }
 
 .timer,
@@ -70,10 +78,16 @@ body {
   align-items: center;
   gap: 20px;
 }
+label{
+  color: #050607;
+  font-weight:bolder;
+}
+
 
 .question-text {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   width: 100%;
   color: #37474F;
 }
