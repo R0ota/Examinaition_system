@@ -14,8 +14,10 @@ const passwordValidation = document.getElementById("passValidation");
 const confirmPasswordValidation = document.getElementById(
   "confirmPassValidation"
 );
+
 //eye in pass
 const togglePassword = document.getElementById("togglePassword");
+
 togglePassword.addEventListener("click", function () {
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
@@ -27,6 +29,19 @@ togglePassword.addEventListener("click", function () {
     this.classList.add("fa-eye-slash");
   }
 });
+const toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
+toggleConfirmPassword.addEventListener("click", function () {
+  if (confirmPasswordInput.type === "password") {
+    confirmPasswordInput.type = "text";
+    this.classList.remove("fa-eye-slash");
+    this.classList.add("fa-eye");
+  } else {
+    confirmPasswordInput.type = "password";
+    this.classList.remove("fa-eye");
+    this.classList.add("fa-eye-slash");
+  }
+});
+
 
 
 // //prevent resullt to come back to exam
