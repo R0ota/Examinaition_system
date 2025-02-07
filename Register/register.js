@@ -41,9 +41,9 @@ window.addEventListener("popstate", function (event) {
 
 // Regex patterns
 const nameRegex = /^[A-Za-z\s]{3,}$/; // Only letters and spaces
-const emailRegex = /^[A-Za-z0-9._%+-]+@gmail\.com$/; // Valid Gmail format
+const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 const passwordRegex =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/; // Password criteria
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.\-_])[A-Za-z\d@$!%*?&.\-_]{8,}$/; // Password criteria
 
 // Validation functions
 function validateName(inputElement, validationElement) {
