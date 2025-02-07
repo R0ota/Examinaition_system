@@ -88,8 +88,7 @@ function validateEmail() {
     return false;
   }
   if (!emailRegex.test(email)) {
-    emailValidation.innerText =
-      "Email must be in the format: example43@gmail.com.";
+    emailValidation.innerText = "Email must be in the format: user@example.ex";
     emailValidation.style.display = "block";
     return false;
   }
@@ -117,7 +116,7 @@ function validatePassword() {
   }
   if (!passwordRegex.test(password)) {
     passwordValidation.innerText =
-      "Password must include an uppercase letter, a lowercase letter, a number, and a special character (@, $, !, %, *, ?, &, or .).";
+      "Password must include an uppercase letter, a lowercase letter, a number, and a special character (@, $, !, %, _, -, *, ?, &, or .).";
     passwordValidation.style.display = "block";
     return false;
   }
