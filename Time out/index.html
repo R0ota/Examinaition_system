@@ -13,8 +13,14 @@
       <h2>Time Out!</h2>
       <img src="../images/time flies.gif" alt="Time Out" />
       <p id="sorry"></p>
+          <button id="btn">Back to Home</button>
     </div>
     <script>
+      //on click on btn go to home page
+      const home = document.getElementById("btn");
+home.addEventListener("click", function () {
+  location.href = "../Register/home.html";})
+
       document.addEventListener("DOMContentLoaded", function () {
         // Retrieve the current user data from localStorage
         let currentUser = JSON.parse(localStorage.getItem("currentUser"));
