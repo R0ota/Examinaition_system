@@ -12,7 +12,7 @@ import { createPagination } from "./pagination.js"; // Handles pagination (next/
 import { timeDown } from "./timer.js"; // Handles countdown timer
 import { submitAction } from "./submit.js"; // Handles quiz submission
 import { displayQuestion } from "./displayQuestion.js"; // Displays questions dynamically
-
+import { shuffleArray } from "./shuffleArray.js"; // Shuffles the questions
 //  Define global variables
 let currentQuestionIndex = 0; // Current active question index
 let markedQuestions = []; // Array to store flagged (marked) questions
@@ -32,24 +32,6 @@ async function fetchQuestions() {
     console.error("Error fetching questions:", error);
     return []; // Return an empty array if fetching fails
   }
-}
-
-function shuffleArray(array) {
-  const shuffled = [...array]; // Clone the array to avoid mutating the original array
-
-  // Perform the shuffle
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
-  }
-
-  // Reassign IDs based on the new order
-  shuffled.forEach((item, index) => {
-    item.id = index + 1; // Assign new IDs starting from 1
-  });
-
-  console.log("Shuffled with new IDs:", shuffled);
-  return shuffled;
 }
 
 //  Navigate between questions
