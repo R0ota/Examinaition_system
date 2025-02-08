@@ -17,18 +17,20 @@ import { shuffleArray } from "./shuffleArray.js"; // Shuffles the questions
 let currentQuestionIndex = 0; // Current active question index
 let markedQuestions = []; // Array to store flagged (marked) questions
 let questions = []; // Array to store fetched questions
-
+const questionscard = document.getElementsByClassName("quiz-wrapper")[0];
 //  Fetch questions dynamically from the JSON file
 async function fetchQuestions() {
   try {
     const response = await fetch("./questions.json");
     if (!response.ok) {
+      questionscard.innerText = `Failed to fetch questions: ${response.status}`;
       throw new Error(`Failed to fetch questions: ${response.status}`);
     }
     const fetchedQuestions = await response.json();
     console.log(fetchedQuestions);
     return shuffleArray(fetchedQuestions); // Shuffle the questions before returning
   } catch (error) {
+    questionscard.innerText = "Error fetching questions!";
     console.error("Error fetching questions:", error);
     return []; // Return an empty array if fetching fails
   }

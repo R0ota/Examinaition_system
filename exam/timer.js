@@ -6,7 +6,7 @@ export function timeDown() {
   // Check if there's already a time stored in localStorage, otherwise set it to 230 seconds.
   let time = localStorage.getItem("remainingTime")
     ? parseInt(localStorage.getItem("remainingTime"), 10)
-    : 120;
+    : 150;
   // Set up an interval to update the timer every second.
 
   const timerInterval = setInterval(() => {
@@ -19,13 +19,13 @@ export function timeDown() {
     timer.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
     // Change the timer color to red when 30 seconds or less remain.
     if (time <= 30) {
-      timer.style.color = "#C62E2E";
+      timer.style.color = "red";
     }
 
     // Update the remaining time in localStorage every second.
     localStorage.setItem("remainingTime", time);
-    // Stop the timer and navigate to a new page when the countdown reaches 0.
 
+    // Stop the timer and navigate to a new page when the countdown reaches 0.
     if (time-- <= 0) {
       clearInterval(timerInterval);
       localStorage.removeItem("remainingTime"); // Clear the stored time when the countdown ends.
