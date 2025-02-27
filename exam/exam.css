@@ -160,7 +160,7 @@ label {
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: block;
+  /* display: block; */
   margin: 20px auto;
 }
 
