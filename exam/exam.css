@@ -260,6 +260,7 @@ input[type="radio"]:checked + label {
   }
   .options {
     width: 90%;
+    margin-top: 20px;
   }
   .question {
     flex-direction: column;
@@ -271,7 +272,7 @@ input[type="radio"]:checked + label {
   }
   .flag-icon {
     right: 90px;
-    top: 80px;
+    top: 90px;
     transform: none;
   }
 }
