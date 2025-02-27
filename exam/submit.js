@@ -1,4 +1,3 @@
-// Reference to the submit button in the HTML document.
 const submitButton = document.querySelector(".submit-button");
 
 // Function attached to the submit button to handle its click event.
@@ -12,19 +11,15 @@ export function submitAction(questions) {
       (question) => !answers[question.id]
     );
 
-    // Select the element intended to display error messages, if any.
-    const errorMessage = document.querySelector(".error-message");
-    // Check if there are any unanswered questions.
+    let errorMessage = document.querySelector(".error-message");
+
     if (unansweredQuestions.length > 0) {
-      // If there are unanswered questions and no error message is currently displayed, create and display one.
       if (!errorMessage) {
-        const message = document.createElement("div");
-        message.className = "error-message";
-        message.style.color = "red";
-        message.style.marginTop = "10px";
-        message.textContent =
-          "You have to answer all questions before submitting!";
-        submitButton.parentElement.appendChild(message);
+        errorMessage = document.createElement("div");
+        errorMessage.className = "error-message";
+        errorMessage.textContent =
+          " You have to answer all questions before submitting!";
+        submitButton.parentElement.appendChild(errorMessage);
       }
     } else {
       // If all questions are answered, remove any existing error message.
